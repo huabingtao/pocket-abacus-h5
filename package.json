@@ -1,0 +1,22 @@
+{
+  "name": "fangdai-calculator",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^2.1.0",
+    "vant": "^4.9.0",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "sass-embedded": "^1.97.3",
+    "typescript": "5.4",
+    "vite": "^5.0.0",
+    "vue-tsc": "^3.2.5"
+  }
+}
