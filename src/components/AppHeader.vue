@@ -1,10 +1,10 @@
 <template>
-  <div class="cat-header">
-    <div class="cat-avatar">
-      <span class="cat-icon">🐱</span>
+  <div class="app-header">
+    <div class="logo-wrapper">
+      <img src="/logo.svg" alt="logo" class="logo-icon" />
     </div>
     <div class="header-content">
-      <h1 class="title">房贷月供精算喵</h1>
+      <h1 class="title">小算盘计算器</h1>
       <p class="subtitle">您的专属房贷计算助手</p>
     </div>
   </div>
@@ -14,7 +14,7 @@
 </script>
 
 <style scoped lang="scss">
-.cat-header {
+.app-header {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -24,7 +24,7 @@
   margin: -20px -20px 20px -20px;
 }
 
-.cat-avatar {
+.logo-wrapper {
   width: 56px;
   height: 56px;
   background: rgba(255, 255, 255, 0.9);
@@ -33,10 +33,13 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(255, 155, 133, 0.3);
+  overflow: hidden;
 }
 
-.cat-icon {
-  font-size: 32px;
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 
 .header-content {

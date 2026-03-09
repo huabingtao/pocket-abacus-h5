@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Background Gradient: Bright modern orange to yellow-orange -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B00" />
+      <stop offset="100%" stop-color="#FFA800" />
+    </linearGradient>
+    <!-- Frame Gradient -->
+    <linearGradient id="frame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A3424" />
+      <stop offset="100%" stop-color="#2D1D13" />
+    </linearGradient>
+    <!-- Bead Gradient: Gold/Yellow -->
+    <linearGradient id="bead" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE873" />
+      <stop offset="100%" stop-color="#F2B705" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Rounded Rect -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  
+  <!-- Inner Drop Shadow -->
+  <rect x="76" y="106" width="360" height="300" rx="32" fill="#000000" opacity="0.15" />
+  
+  <!-- Abacus Outer Frame -->
+  <rect x="80" y="100" width="352" height="300" rx="28" fill="url(#frame)" />
+  
+  <!-- Abacus Inner Area -->
+  <rect x="100" y="120" width="312" height="260" rx="12" fill="#F4F1EA" />
+  
+  <!-- Separator Bar -->
+  <rect x="100" y="210" width="312" height="16" fill="url(#frame)" />
+  
+  <!-- Rods -->
+  <rect x="156" y="120" width="8" height="260" fill="#B3A295" />
+  <rect x="252" y="120" width="8" height="260" fill="#B3A295" />
+  <rect x="348" y="120" width="8" height="260" fill="#B3A295" />
+
+  <!-- Upper Beads (Value 5) -->
+  <rect x="130" y="140" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="226" y="160" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="322" y="140" width="60" height="32" rx="16" fill="url(#bead)" />
+
+  <!-- Lower Beads (Value 1) -->
+  <rect x="130" y="240" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="130" y="276" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="130" y="312" width="60" height="32" rx="16" fill="url(#bead)" />
+  
+  <rect x="226" y="260" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="226" y="296" width="60" height="32" rx="16" fill="url(#bead)" />
+  
+  <rect x="322" y="240" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="322" y="276" width="60" height="32" rx="16" fill="url(#bead)" />
+  <rect x="322" y="312" width="60" height="32" rx="16" fill="url(#bead)" />
+</svg>

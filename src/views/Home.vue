@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useLoanStore } from '../stores/loan'
-import CatHeader from '../components/CatHeader.vue'
+import AppHeader from '../components/AppHeader.vue'
 import LoanInput from '../components/LoanInput.vue'
 import RateSelector from '../components/RateSelector.vue'
 import ResultCard from '../components/ResultCard.vue'
