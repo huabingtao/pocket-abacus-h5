@@ -17,11 +17,11 @@ export function useLPR() {
   const lprChangePerYear = ref(0.0025)
 
   const effectiveRate = computed(() => {
-    return currentLPR.value + bp.value / 100
+    return currentLPR.value + bp.value / 10000
   })
 
   function calculateEffectiveRate(lpr: number, bpValue: number): number {
-    return lpr + bpValue / 100
+    return lpr + bpValue / 10000
   }
 
   function getCurrentLPR(): number {
@@ -41,13 +41,13 @@ export function useLPR() {
     years: number = 5
   ): RateProjection[] {
     const projections: RateProjection[] = []
-    const monthlyRate = (lprValue + bpValue / 100) / 12
+    const monthlyRate = (lprValue + bpValue / 10000) / 12
     const factor = Math.pow(1 + monthlyRate, totalMonths)
     const basePayment = principal * monthlyRate * factor / (factor - 1)
 
     for (let year = 1; year <= years; year++) {
       const projectedLPR = lprValue - (changePerYear * year)
-      const rate = projectedLPR + bpValue / 100
+      const rate = projectedLPR + bpValue / 10000
       const projMonthlyRate = rate / 12
       const projFactor = Math.pow(1 + projMonthlyRate, totalMonths)
       const projPayment = principal * projMonthlyRate * projFactor / (projFactor - 1)

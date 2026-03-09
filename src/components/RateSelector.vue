@@ -55,6 +55,7 @@
             :max="100"
             :step="5"
             :value="store.commercialBp"
+            :style="{ background: sliderBackground }"
             @input="onBpSlider"
           />
           <div class="bp-slider-labels">
@@ -105,17 +106,15 @@
       <div class="divider" v-if="store.loanType === 'combined'"></div>
       <div class="field-group">
         <div class="label">公积金贷款利率</div>
-        <div class="tab-buttons">
-          <button
-            class="tab-btn"
-            :class="{ active: store.fundRate === HOUSING_FUND_RATES.firstSet }"
-            @click="store.fundRate = HOUSING_FUND_RATES.firstSet"
-          >首套 {{ (HOUSING_FUND_RATES.firstSet * 100).toFixed(2) }}%</button>
-          <button
-            class="tab-btn"
-            :class="{ active: store.fundRate === HOUSING_FUND_RATES.secondSet }"
-            @click="store.fundRate = HOUSING_FUND_RATES.secondSet"
-          >二套 {{ (HOUSING_FUND_RATES.secondSet * 100).toFixed(2) }}%</button>
+        <div class="input-row">
+          <input
+            class="rate-input"
+            type="number"
+            step="0.01"
+            :value="(store.fundRate * 100).toFixed(2)"
+            @input="onFundRateInput"
+          />
+          <span class="unit">%</span>
         </div>
       </div>
     </div>
@@ -125,13 +124,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useLoanStore } from '../stores/loan'
-import { HOUSING_FUND_RATES } from '../utils/constants'
 
 const store = useLoanStore()
 
 const effectiveRateText = computed(() => {
-  const rate = store.lprValue + store.commercialBp / 100
+  const rate = store.lprValue + store.commercialBp / 10000
   return `${(rate * 100).toFixed(2)}%`
+})
+
+const sliderBackground = computed(() => {
+  const bp = store.commercialBp
+  const percent = ((bp + 100) / 200) * 100
+  return `linear-gradient(to right, var(--primary-color) ${percent}%, var(--border-color) ${percent}%)`
 })
 
 function adjustBp(delta: number) {
@@ -151,6 +155,11 @@ function onBpSlider(e: Event) {
 function onFixedRateInput(e: Event) {
   const val = parseFloat((e.target as HTMLInputElement).value) || 0
   store.setFixedRate(val / 100)
+}
+
+function onFundRateInput(e: Event) {
+  const val = parseFloat((e.target as HTMLInputElement).value) || 0
+  store.setFundRate(val / 100)
 }
 </script>
 
@@ -296,7 +305,7 @@ function onFixedRateInput(e: Event) {
   -webkit-appearance: none;
   height: 4px;
   border-radius: 2px;
-  background: linear-gradient(to right, var(--primary-color) 50%, var(--border-color) 50%);
+  background: var(--border-color);
   outline: none;
   cursor: pointer;
 

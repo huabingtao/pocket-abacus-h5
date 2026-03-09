@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import type { LoanConfig, RepayMethod } from '../utils/constants'
-import { LPR_RATES, HOUSING_FUND_RATES } from '../utils/constants'
+import { LPR_RATES } from '../utils/constants'
 
 export interface AmortizationRow {
   month: number
@@ -27,7 +27,7 @@ export function useMortgage() {
     commercialRate: LPR_RATES.current.fiveYear,
     commercialBp: 0,
     fundAmount: 0,
-    fundRate: HOUSING_FUND_RATES.firstSet,
+    fundRate: 0.026,
     months: 240,
     repayMethod: 'equalInterest',
     rateType: 'lpr',
@@ -40,7 +40,7 @@ export function useMortgage() {
     if (rateType === 'fixed' && fixedRate) {
       return fixedRate
     }
-    return rate + bp / 100
+    return rate + bp / 10000
   }
 
   function calculateEqualInterest(principal: number, annualRate: number, months: number): MortgageResult {

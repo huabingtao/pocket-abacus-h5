@@ -70,7 +70,7 @@
         </div>
         <div class="result-item" v-if="strategy === 'shortenTerm'">
           <div class="r-label">缩短期限</div>
-          <div class="r-value">{{ store.months - earlyResult.newMonths }} 个月</div>
+          <div class="r-value">{{ (store.months - monthsPaid) - earlyResult.newMonths }} 个月</div>
         </div>
         <div class="result-item">
           <div class="r-label">节省利息</div>
@@ -105,7 +105,7 @@ const principal = computed(() => {
 
 const annualRate = computed(() => {
   if (store.rateType === 'lpr') {
-    return store.lprValue + store.commercialBp / 100
+    return store.lprValue + store.commercialBp / 10000
   }
   return store.fixedRate ?? store.lprValue
 })

@@ -67,7 +67,7 @@ const principal = computed(() => {
 })
 
 const basePayment = computed(() => {
-  const rate = (store.lprValue + store.commercialBp / 100) / 12
+  const rate = (store.lprValue + store.commercialBp / 10000) / 12
   const n = store.months
   const factor = Math.pow(1 + rate, n)
   return principal.value * rate * factor / (factor - 1)

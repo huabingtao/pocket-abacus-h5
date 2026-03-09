@@ -74,6 +74,22 @@
       </div>
     </div>
 
+    <!-- 公积金贷款利率 -->
+    <div class="field-group" v-if="store.loanType !== 'commercial'">
+      <div class="label">公积金贷款利率</div>
+      <div class="input-row">
+        <input
+          class="amount-input"
+          type="number"
+          step="0.01"
+          :value="(store.fundRate * 100).toFixed(2)"
+          @input="onFundRateInput"
+          placeholder="请输入利率"
+        />
+        <span class="unit">%</span>
+      </div>
+    </div>
+
     <!-- 贷款期限 -->
     <div class="field-group">
       <div class="label">贷款期限</div>
@@ -152,6 +168,11 @@ function onFundAmountInput(e: Event) {
 function onFundSlider(e: Event) {
   const val = parseFloat((e.target as HTMLInputElement).value)
   store.setFundAmount(val * 10000)
+}
+
+function onFundRateInput(e: Event) {
+  const val = parseFloat((e.target as HTMLInputElement).value) || 0
+  store.setFundRate(val / 100)
 }
 
 function onYearsInput(e: Event) {

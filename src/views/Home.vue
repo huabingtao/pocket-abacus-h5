@@ -75,7 +75,7 @@ const mortgageResult = computed(() => {
   } = store
 
   const effectiveCommRate = rateType === 'lpr'
-    ? lprValue + commercialBp / 100
+    ? lprValue + commercialBp / 10000
     : (fixedRate ?? lprValue)
 
   function epi(principal: number, rate: number, n: number) {
@@ -147,7 +147,7 @@ const mortgageResult = computed(() => {
 const compareResult = computed(() => {
   if (store.repayMethod !== 'equalInterest') return undefined
   const { loanType, commercialAmount, fundAmount, commercialBp, lprValue, rateType, fixedRate, fundRate, months } = store
-  const rate = rateType === 'lpr' ? lprValue + commercialBp / 100 : (fixedRate ?? lprValue)
+  const rate = rateType === 'lpr' ? lprValue + commercialBp / 10000 : (fixedRate ?? lprValue)
   const principal = loanType === 'commercial' ? commercialAmount : loanType === 'provinceFund' ? fundAmount : commercialAmount + fundAmount
   const effRate = loanType === 'provinceFund' ? fundRate : rate
 

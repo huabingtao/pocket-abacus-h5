@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { LoanType, RepayMethod, RateType } from '../utils/constants'
-import { LPR_RATES, HOUSING_FUND_RATES } from '../utils/constants'
+import { LPR_RATES } from '../utils/constants'
 
 export const useLoanStore = defineStore('loan', () => {
   const loanType = ref<LoanType>('commercial')
@@ -10,7 +10,7 @@ export const useLoanStore = defineStore('loan', () => {
   const commercialRate = ref(LPR_RATES.current.fiveYear)
   const commercialBp = ref(0)
   const fundAmount = ref(0)
-  const fundRate = ref(HOUSING_FUND_RATES.firstSet)
+  const fundRate = ref(0.026)
   const months = ref(240)
   const repayMethod = ref<RepayMethod>('equalInterest')
   const rateType = ref<RateType>('lpr')
@@ -37,6 +37,10 @@ export const useLoanStore = defineStore('loan', () => {
 
   function setFundAmount(amount: number) {
     fundAmount.value = amount
+  }
+
+  function setFundRate(rate: number) {
+    fundRate.value = rate
   }
 
   function setMonths(m: number) {
@@ -105,6 +109,7 @@ export const useLoanStore = defineStore('loan', () => {
     setTotalAmount,
     setCommercialAmount,
     setFundAmount,
+    setFundRate,
     setMonths,
     setRepayMethod,
     setRateType,
